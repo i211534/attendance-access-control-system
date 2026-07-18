@@ -1,6 +1,4 @@
 <div align="center">
-  <img src="./Frontend/frontend/public/Logo.svg" alt="Smart Attendance System" width="300" />
-
   <h1>Smart Attendance System</h1>
 
   <p>
@@ -95,141 +93,37 @@ The backend is organized by business domain—authentication, personnel, attenda
 - Environment-specific staging and production builds
 - Health and connectivity endpoints
 
-## Getting Started
+## Core Workflows
 
-### Prerequisites
+### Attendance Lifecycle
 
-- Node.js 20 or newer
-- npm
-- MongoDB
+1. Attendance and access devices submit pass events to the NestJS API.
+2. Records are normalized and processed against employee, schedule, shift, holiday, and attendance-rule data.
+3. Live events are broadcast through the Socket.IO attendance namespace.
+4. Dashboard metrics, attendance details, rejected entries, and reports reflect the processed results.
+5. Scheduled services calculate attendance summaries and payroll data.
 
-### 1. Clone the repository
+### Access-Control Lifecycle
 
-```bash
-git clone <repository-url>
-cd Attendance
-```
+1. Administrators organize people and devices into reusable groups.
+2. Time plans define weekly schedules and holiday periods.
+3. Access policies connect person groups, device groups, and time plans.
+4. Permission data and person profiles are synchronized with connected devices.
+5. Pass records and device commands remain available for monitoring and export.
 
-### 2. Configure and run the backend
+### Authorization Model
 
-```bash
-cd Backend/backend
-npm install
-```
+The system combines predefined roles with granular permission grants. Data access is scoped by organization, branch, department, and employee identity, allowing the same platform to serve system administrators, organization administrators, branch teams, sub-administrators, and employees.
 
-Create `Backend/backend/.env`:
+## Integration Capabilities
 
-```env
-PORT=3001
-NODE_ENV=development
-MONGO_URI=mongodb://localhost:27017/attendance
-CORS_ORIGINS=http://localhost:3000
-
-SEED_SUPER_ADMIN_USERNAME=admin
-SEED_SUPER_ADMIN_PASSWORD=replace-with-a-strong-password
-
-ENABLE_SWAGGER=true
-SWAGGER_USER=admin
-SWAGGER_PASSWORD=replace-with-a-strong-password
-```
-
-Start the API:
-
-```bash
-npm run start:dev
-```
-
-The backend creates the initial Super Admin account from the seed variables when the database does not already contain one.
-
-### 3. Configure and run the frontend
-
-Open a second terminal:
-
-```bash
-cd Frontend/frontend
-npm install
-```
-
-Create `Frontend/frontend/.env.local`:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001
-NEXT_PUBLIC_WS_URL=http://localhost:3001
-```
-
-Start the web application:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) and sign in with the seeded administrator credentials.
-
-## Useful Commands
-
-| Application | Command | Purpose |
-| --- | --- | --- |
-| Frontend | `npm run dev` | Start the Next.js development server |
-| Frontend | `npm run build` | Create a production build |
-| Frontend | `npm run start` | Start the production server |
-| Frontend | `npm run lint` | Run ESLint |
-| Backend | `npm run start:dev` | Start NestJS with automatic reload |
-| Backend | `npm run build` | Compile TypeScript to `dist/` |
-| Backend | `npm run start` | Run the compiled API |
-
-## API and Health Checks
-
-With the backend running on port `3001`:
-
-- Health status: [http://localhost:3001/health](http://localhost:3001/health)
-- Connectivity check: [http://localhost:3001/ping](http://localhost:3001/ping)
-- Swagger UI: [http://localhost:3001/api](http://localhost:3001/api)
-- OpenAPI document: [http://localhost:3001/api-json](http://localhost:3001/api-json)
-- Attendance WebSocket namespace: `http://localhost:3001/attendance`
-
-Swagger is enabled for non-production environments and protected with the configured Swagger credentials.
-
-## Optional Integrations
-
-Amazon S3-backed employee photo storage can be enabled with:
-
-```env
-S3_BUCKET_NAME=your-bucket
-S3_BUCKET_REGION=your-region
-S3_ACCESS_KEY=your-access-key
-S3_SECRET_ACCESS_KEY=your-secret-key
-S3_PRESIGN_EXPIRES_SECONDS=3600
-```
-
-Connected attendance and access-control devices can be registered in the Device Management module. A default device endpoint can also be supplied through `DEVICE_IP`.
-
-## Project Structure
-
-```text
-Attendance/
-├── Frontend/
-│   └── frontend/
-│       ├── public/              # Brand and static assets
-│       ├── scripts/             # Environment-aware build helpers
-│       └── src/
-│           ├── app/             # App Router pages and feature modules
-│           ├── components/      # Shared UI components
-│           ├── context/         # Authentication and scope contexts
-│           ├── hooks/           # Reusable React hooks
-│           └── lib/             # Typed API clients and utilities
-└── Backend/
-    └── backend/
-        └── src/
-            ├── access-control/  # Policies, devices, time plans, and passes
-            ├── account/         # Accounts, roles, and permission grants
-            ├── attendance/      # Processing, schedules, reports, and exports
-            ├── auth/            # Authentication and authorization guards
-            ├── dashboard/       # Operational metrics and trends
-            ├── personnel/       # People, groups, departments, and imports
-            ├── payroll/         # Payroll calculation and summaries
-            ├── websocket/       # Live attendance event gateway
-            └── main.ts          # API bootstrap and runtime configuration
-```
+- Attendance and access-control device APIs
+- Socket.IO real-time attendance events
+- Amazon S3 employee photo storage
+- Excel, CSV, and ZIP import/export workflows
+- Scheduled attendance, payroll, and database synchronization
+- Swagger/OpenAPI documentation
+- Health, database, and connectivity monitoring
 
 ## Engineering Highlights
 
