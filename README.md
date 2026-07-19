@@ -24,16 +24,16 @@ The platform combines a Next.js dashboard with a modular NestJS API, MongoDB per
 
 ## Key Features
 
-- **Live operations dashboard** — employee and blacklist totals, device connectivity, attendance status charts, pass trends, and latest access events.
-- **Personnel management** — employee profiles, departments, blacklists, device assignments, bulk Excel/ZIP imports, exports, and photo handling.
-- **Attendance workflows** — attendance points, groups, shifts, weekly working hours, cycle and temporary schedules, holidays, adjustments, rejected entries, and configurable attendance rules.
-- **Reporting and payroll** — daily, weekly, and monthly reports grouped by organization, department, or person, with paginated results and CSV/XLSX exports.
-- **Access control** — reusable time plans, person and device groups, access policies, exception lists, pass records, and device synchronization.
-- **Multi organization administration** — hierarchical organizations, branches, and departments with scope aware filtering throughout the application.
-- **Role and permission management** — role based access plus granular IAM style permission grants for protected UI actions and API endpoints.
-- **Device operations** — device registration, status monitoring, remote commands, request queuing, person synchronization, and operation job tracking.
-- **Real time updates** — Socket.IO attendance events and background data processing for responsive operational views.
-- **System administration** — account management, custom export templates, operation logs, database synchronization settings, health checks, and interactive API documentation.
+- **Live operations dashboard:** employee and blacklist totals, device connectivity, attendance status charts, pass trends, and latest access events.
+- **Personnel management:** employee profiles, departments, blacklists, device assignments, bulk Excel/ZIP imports, exports, and photo handling.
+- **Attendance workflows:** attendance points, groups, shifts, weekly working hours, cycle and temporary schedules, holidays, adjustments, rejected entries, and configurable attendance rules.
+- **Reporting and payroll:** daily, weekly, and monthly reports grouped by organization, department, or person, with paginated results and CSV/XLSX exports.
+- **Access control:** reusable time plans, person and device groups, access policies, exception lists, pass records, and device synchronization.
+- **Multi organization administration:** hierarchical organizations, branches, and departments with scope aware filtering throughout the application.
+- **Role and permission management:** role based access plus granular IAM style permission grants for protected UI actions and API endpoints.
+- **Device operations:** device registration, status monitoring, remote commands, request queuing, person synchronization, and operation job tracking.
+- **Real time updates:** Socket.IO attendance events and background data processing for responsive operational views.
+- **System administration:** account management, custom export templates, operation logs, database synchronization settings, health checks, and interactive API documentation.
 
 ## Architecture
 
