@@ -16,6 +16,8 @@
   </p>
 </div>
 
+> **Note:** This is a portfolio case study. Smart Attendance System is closed source, proprietary company work built at Rockville Technologies, so no source code is included here.
+
 ## Overview
 
 Smart Attendance System brings personnel, attendance, payroll, physical access, and connected device workflows into one responsive administration portal. It supports organization, branch, and department hierarchies.
